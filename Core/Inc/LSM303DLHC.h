@@ -8,7 +8,7 @@
 #ifndef INC_LSM303DLHC_H_
 #define INC_LSM303DLHC_H_
 
-#include "gpio.h"
+#include "stm32f3xx_hal.h"
 #include "stdbool.h"
 #include "limits.h"
 /******************************************************************************/
@@ -389,26 +389,13 @@ typedef struct {
 } LSM303DLHC_ACC_Values;
 
 typedef struct {
-	uint8_t X[2];
-	uint8_t Y[2];
-	uint8_t Z[2];
-} LSM303DLHC_ACC_Values_uint8_t;
-
-typedef struct {
 	float X;
 	float Y;
 	float Z;
 } LSM303DLHC_MAG_Values;
 
-typedef struct {
-	uint8_t X[2];
-	uint8_t Y[2];
-	uint8_t Z[2];
-} LSM303DLHC_MAG_Values_uint8_t;
-
 void LSM303DLHC_Init(I2C_HandleTypeDef*);
 uint8_t* LSM303DLHC_GetID();
 void LSM303DLHC_GetValues(LSM303DLHC_ACC_Values *, LSM303DLHC_MAG_Values *);
-void LSM303DLHC_GetValues_Uint8_t(LSM303DLHC_ACC_Values_uint8_t *, LSM303DLHC_MAG_Values_uint8_t *);
 void LSM303DLHC_Reboot();
 #endif /* INC_LSM303DLHC_H_ */

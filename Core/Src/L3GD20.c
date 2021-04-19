@@ -7,8 +7,8 @@
 
 #include "L3GD20.h"
 
-SPI_HandleTypeDef *_handler;
-L3GD20_Sensitivity _sensitivity;
+static SPI_HandleTypeDef *_handler;
+static L3GD20_Sensitivity _sensitivity;
 
 //private functions
 static void L3GD20_Write(uint8_t*, uint8_t, uint16_t);

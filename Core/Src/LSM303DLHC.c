@@ -7,7 +7,7 @@
 
 #include "LSM303DLHC.h"
 
-I2C_HandleTypeDef *_i2c;
+static I2C_HandleTypeDef *_i2c;
 static void LSM303DLHC_Read(bool, uint16_t, uint8_t*, uint16_t);
 static void LSM303DLHC_Write(uint16_t dev, uint8_t reg, uint8_t read);
 static uint8_t LSM303DLHC_ReadByte(uint16_t, uint8_t);
@@ -149,52 +149,6 @@ void LSM303DLHC_GetValues(LSM303DLHC_ACC_Values *acc,
 	mag->X = (float) (pnRawData[0] * sensitivity_MAG_XY) / (float) INT16_MAX;
 	mag->Y = (float) (pnRawData[1] * sensitivity_MAG_XY) / (float) INT16_MAX;
 	mag->Z = (float) (pnRawData[2] * sensitivity_MAG_Z) / (float) INT16_MAX;
-}
-
-void LSM303DLHC_GetValues_Uint8_t(LSM303DLHC_ACC_Values_uint8_t *acc, LSM303DLHC_MAG_Values_uint8_t *mag)
-{
-	int16_t pnRawData[3];
-		uint8_t buffer[6];
-		uint8_t i = 0, ctrlmag = 0;
-		uint8_t ctrlx[2] = { 0, 0 };
-		uint8_t sensitivity_ACC = LSM303DLHC_ACC_SENSITIVITY_2G,
-				sensitivity_MAG_XY = LSM303DLHC_M_SENSITIVITY_XY_8_1Ga,
-				sensitivity_MAG_Z = LSM303DLHC_M_SENSITIVITY_Z_8_1Ga;
-
-		ctrlx[0] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_CTRL_REG4_A);
-		ctrlx[1] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_CTRL_REG5_A);
-
-		buffer[0] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_X_L_A);
-		buffer[1] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_X_H_A);
-		buffer[2] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_Y_L_A);
-		buffer[3] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_Y_H_A);
-		buffer[4] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_Z_L_A);
-		buffer[5] = LSM303DLHC_ReadByte(ACC_I2C_ADDRESS, LSM303DLHC_OUT_Z_H_A);
-
-		acc->X[0] = buffer[1];
-		acc->X[1] = buffer[0];
-
-		acc->Y[0] = buffer[3];
-		acc->Y[1] = buffer[2];
-
-		acc->Z[0] = buffer[5];
-		acc->Z[1] = buffer[4];
-
-		buffer[0] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_X_L_M);
-		buffer[1] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_X_H_M);
-		buffer[2] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_Y_L_M);
-		buffer[3] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_Y_H_M);
-		buffer[4] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_Z_L_M);
-		buffer[5] = LSM303DLHC_ReadByte(MAG_I2C_ADDRESS, LSM303DLHC_OUT_Z_H_M);
-
-		mag->X[0] = buffer[1];
-		mag->X[1] = buffer[0];
-
-		mag->Y[0] = buffer[3];
-		mag->Y[1] = buffer[2];
-
-		mag->Z[0] = buffer[5];
-		mag->Z[1] = buffer[4];
 }
 
 static void LSM303DLHC_Read(bool dev, uint16_t reg, uint8_t *read,

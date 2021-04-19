@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000209b8  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00012830  00000000  00000000  000209e8  2**0
+ 12 .debug_info   00012701  00000000  00000000  000209e8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000030f2  00000000  00000000  00033218  2**0
+ 13 .debug_abbrev 000030cc  00000000  00000000  000330e9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000e58  00000000  00000000  00036310  2**3
+ 14 .debug_aranges 00000e50  00000000  00000000  000361b8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000d00  00000000  00000000  00037168  2**3
+ 15 .debug_ranges 00000cf8  00000000  00000000  00037008  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000202dd  00000000  00000000  00037e68  2**0
+ 16 .debug_macro  000204a9  00000000  00000000  00037d00  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00013862  00000000  00000000  00058145  2**0
+ 17 .debug_line   00013767  00000000  00000000  000581a9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000b4bd2  00000000  00000000  0006b9a7  2**0
+ 18 .debug_str    000b4b79  00000000  00000000  0006b910  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  00120579  2**0
+ 19 .comment      00000053  00000000  00000000  00120489  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00004d00  00000000  00000000  001205cc  2**2
+ 20 .debug_frame  00004cdc  00000000  00000000  001204dc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1705,8 +1705,8 @@ void L3GD20_Init(L3GD20_Sensitivity sensitivity, SPI_HandleTypeDef *handler) {
  80012ba:	46bd      	mov	sp, r7
  80012bc:	bd80      	pop	{r7, pc}
  80012be:	bf00      	nop
- 80012c0:	20000a40 	.word	0x20000a40
- 80012c4:	20000a3c 	.word	0x20000a3c
+ 80012c0:	20000a00 	.word	0x20000a00
+ 80012c4:	20000a04 	.word	0x20000a04
 
 080012c8 <L3GD20_Reboot>:
 
@@ -1959,7 +1959,7 @@ void L3GD20_ReadValues(L3GD20_Values *values) {
  800147a:	3728      	adds	r7, #40	; 0x28
  800147c:	46bd      	mov	sp, r7
  800147e:	bd80      	pop	{r7, pc}
- 8001480:	20000a3c 	.word	0x20000a3c
+ 8001480:	20000a04 	.word	0x20000a04
  8001484:	410c0000 	.word	0x410c0000
  8001488:	418c0000 	.word	0x418c0000
  800148c:	428c0000 	.word	0x428c0000
@@ -2145,10 +2145,10 @@ static uint8_t L3GD20_WriteByte(uint8_t reg) {
  800158e:	3710      	adds	r7, #16
  8001590:	46bd      	mov	sp, r7
  8001592:	bd80      	pop	{r7, pc}
- 8001594:	20000a40 	.word	0x20000a40
+ 8001594:	20000a00 	.word	0x20000a00
 
 08001598 <LSM303DLHC_Init>:
-I2C_HandleTypeDef *_i2c;
+static I2C_HandleTypeDef *_i2c;
 static void LSM303DLHC_Read(bool, uint16_t, uint8_t*, uint16_t);
 static void LSM303DLHC_Write(uint16_t dev, uint8_t reg, uint8_t read);
 static uint8_t LSM303DLHC_ReadByte(uint16_t, uint8_t);
@@ -2235,7 +2235,7 @@ void LSM303DLHC_Init(I2C_HandleTypeDef *i2c) {
  800160a:	46bd      	mov	sp, r7
  800160c:	bd80      	pop	{r7, pc}
  800160e:	bf00      	nop
- 8001610:	20000a44 	.word	0x20000a44
+ 8001610:	20000a08 	.word	0x20000a08
 
 08001614 <LSM303DLHC_Reboot>:
 
@@ -2743,7 +2743,7 @@ static void LSM303DLHC_Write(uint16_t dev, uint8_t reg, uint8_t read) {
  80019a2:	46bd      	mov	sp, r7
  80019a4:	bd80      	pop	{r7, pc}
  80019a6:	bf00      	nop
- 80019a8:	20000a44 	.word	0x20000a44
+ 80019a8:	20000a08 	.word	0x20000a08
 
 080019ac <LSM303DLHC_ReadByte>:
 
@@ -2783,7 +2783,7 @@ static uint8_t LSM303DLHC_ReadByte(uint16_t dev, uint8_t reg) {
  80019e2:	3710      	adds	r7, #16
  80019e4:	46bd      	mov	sp, r7
  80019e6:	bd80      	pop	{r7, pc}
- 80019e8:	20000a44 	.word	0x20000a44
+ 80019e8:	20000a08 	.word	0x20000a08
 
 080019ec <MX_GPIO_Init>:
         * EXTI
@@ -3462,7 +3462,7 @@ int main(void)
  8001e90:	20000adc 	.word	0x20000adc
  8001e94:	48001000 	.word	0x48001000
  8001e98:	20000a48 	.word	0x20000a48
- 8001e9c:	20000a00 	.word	0x20000a00
+ 8001e9c:	20000a0c 	.word	0x20000a0c
  8001ea0:	20000aac 	.word	0x20000aac
  8001ea4:	20000ac4 	.word	0x20000ac4
  8001ea8:	20000a94 	.word	0x20000a94
@@ -4351,7 +4351,7 @@ void *_sbrk(ptrdiff_t incr)
  80022c6:	bd80      	pop	{r7, pc}
  80022c8:	2000a000 	.word	0x2000a000
  80022cc:	00000400 	.word	0x00000400
- 80022d0:	20000a04 	.word	0x20000a04
+ 80022d0:	20000a10 	.word	0x20000a10
  80022d4:	20000bd8 	.word	0x20000bd8
 
 080022d8 <SystemInit>:
@@ -17987,7 +17987,7 @@ __weak void HAL_UARTEx_WakeupCallback(UART_HandleTypeDef *huart)
  80083a2:	bf00      	nop
  80083a4:	2000043c 	.word	0x2000043c
  80083a8:	20000844 	.word	0x20000844
- 80083ac:	20000a08 	.word	0x20000a08
+ 80083ac:	20000a14 	.word	0x20000a14
 
 080083b0 <_free_r>:
  80083b0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
@@ -18138,7 +18138,7 @@ __weak void HAL_UARTEx_WakeupCallback(UART_HandleTypeDef *huart)
  800851e:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
  8008520:	2000043c 	.word	0x2000043c
  8008524:	20000848 	.word	0x20000848
- 8008528:	20000a38 	.word	0x20000a38
+ 8008528:	20000a44 	.word	0x20000a44
  800852c:	20000444 	.word	0x20000444
 
 08008530 <_localeconv_r>:
@@ -18468,11 +18468,11 @@ __weak void HAL_UARTEx_WakeupCallback(UART_HandleTypeDef *huart)
  800887a:	bf00      	nop
  800887c:	2000043c 	.word	0x2000043c
  8008880:	20000444 	.word	0x20000444
- 8008884:	20000a38 	.word	0x20000a38
+ 8008884:	20000a44 	.word	0x20000a44
  8008888:	20000844 	.word	0x20000844
- 800888c:	20000a30 	.word	0x20000a30
- 8008890:	20000a34 	.word	0x20000a34
- 8008894:	20000a08 	.word	0x20000a08
+ 800888c:	20000a3c 	.word	0x20000a3c
+ 8008890:	20000a40 	.word	0x20000a40
+ 8008894:	20000a14 	.word	0x20000a14
  8008898:	f1ba 0f00 	cmp.w	sl, #0
  800889c:	db11      	blt.n	80088c2 <_malloc_r+0x382>
  800889e:	4420      	add	r0, r4
